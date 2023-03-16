@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import tpm.yu.mol.share.util.SaLogger
 import tpm.yu.mol.share.view.SaList
+import tpm.yu.mol.share.view.SaPager
 
 class SaManager {
     private var apps = arrayListOf<AppInfo>()
@@ -26,20 +27,20 @@ class SaManager {
         this.apps.addAll(apps)
     }
 
-    fun buildViewAllApp(context: Context, data: SaView): View {
+    fun buildView(context: Context, data: SaData): View {
         return when (data.viewType) {
-            is SaView.List -> {
+            is SaData.List -> {
                 SaLogger.instance.i("build list format")
                 SaList(context).createContent(apps = apps, data = data)
             }
-            is SaView.Grid -> {
+            is SaData.Grid -> {
                 SaLogger.instance.i("build grid format")
                 SaList(context).createContent(apps = apps, data = data)
             }
+            is SaData.Pager -> {
+                SaLogger.instance.i("build pager format")
+                SaPager(context).createContent(apps = apps, data = data)
+            }
         }
-    }
-
-    fun buildViewOneApp(context: Context) {
-
     }
 }

@@ -15,7 +15,7 @@ import tpm.yu.mol.share.databinding.ViewListBinding
 import tpm.yu.mol.share.util.SaConstant
 import tpm.yu.mol.share.util.SaLogger
 
-class SaList : BaseView {
+class SaPager : BaseView {
     private val binding: ViewListBinding
 
     constructor(context: Context) : super(context)
@@ -30,7 +30,7 @@ class SaList : BaseView {
         binding = ViewListBinding.inflate(inflater, this, true)
     }
 
-    fun createContent(apps: List<AppInfo>, data: SaData): SaList {
+    fun createContent(apps: List<AppInfo>, data: SaData): SaPager {
         when (data.viewType) {
             is SaData.ListData -> {
                 SaLogger.instance.i("create layout manager")

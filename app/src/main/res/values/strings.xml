@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Sharing App Demo</string>
+    <string name="list_vertical">List Vertical</string>
+    <string name="list_horizontal">List Horizontal</string>
+    <string name="grid_vertical">Grid Vertical</string>
+    <string name="grid_horizontal">Grid Horizontal</string>
+    <string name="pager_vertical">Pager Vertical</string>
+    <string name="pager_horizontal">Pager Horizontal</string>
+    <string name="one">One</string>
+    <string name="popup">Popup</string>
 </resources>
