@@ -1,17 +1,13 @@
 package tpm.yu.mol.share.demo
 
-import android.app.ActionBar.LayoutParams
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import tpm.yu.mol.share.bin.AppInfo
-import tpm.yu.mol.share.util.SaLogger
 import tpm.yu.mol.share.bin.SaManager
 import tpm.yu.mol.share.bin.SaView
 import tpm.yu.mol.share.demo.databinding.ActivityMainBinding
+import tpm.yu.mol.share.util.SaLogger
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,15 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         val manager: SaManager = SaManager.instance
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.apps.observe(this, Observer {
+        viewModel.apps.observe(this) {
             manager.setApps(apps = it)
 
-          val saView = SaView(viewType = SaView.List(direction = SaView.Direction.HORIZONTAL));
-//            val saView = SaView(viewType = SaView.Grid(direction = SaView.Direction.HORIZONTAL, count = 4));
+            val saView = SaView(viewType = SaView.List(direction = SaView.Direction.HORIZONTAL))
+//            val saView = SaView(viewType = SaView.Grid(direction = SaView.Direction.HORIZONTAL, count = 4))
             val view = manager.buildViewAllApp(context = this, data = saView)
-            val lp = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT)
+            val lp = ConstraintLayout.LayoutParams(
+                ConstraintLayout.LayoutParams.MATCH_PARENT,
+                ConstraintLayout.LayoutParams.MATCH_PARENT
+            )
             binding.root.addView(view, lp)
-        })
+        }
         viewModel.dummyApps()
     }
 }
