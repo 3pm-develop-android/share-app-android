@@ -58,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             val data = SaData.Pager(direction = horizontal, fragmentActivity = this)
             buildView(data = SaData(viewType = data))
         }
+        binding.one.setOnClickListener {
+            val data = SaData.One()
+            buildView(data = SaData(viewType = data))
+        }
     }
 
     private fun buildView(data: SaData) {

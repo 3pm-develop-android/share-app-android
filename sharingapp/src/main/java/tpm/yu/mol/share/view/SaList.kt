@@ -53,9 +53,6 @@ class SaList : BaseView {
                 SaLogger.instance.i("create adapter")
                 val adapter = ListAdapter(data = apps)
                 binding.list.adapter = adapter
-
-                SaLogger.instance.i("end")
-
             }
             else -> {
                 SaLogger.instance.w(SaConstant.Error.invalidType.format(data.viewType.toString()))
@@ -80,7 +77,7 @@ class SaList : BaseView {
             holder.setData(item)
         }
 
-        class ViewHolder(val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+        class ViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
             fun setData(item: AppInfo) {
                 Glide.with(binding.layout.context).load(item.logo).into(binding.icon)
             }

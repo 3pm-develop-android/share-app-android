@@ -34,5 +34,5 @@ class SaData(val viewType: BaseData) {
     /* ************************************************************
      * One
      ************************************************************ */
-    sealed class OneType(open var direction: Direction) : BaseData(quantity = Quantity.ONE)
+    class One() : BaseData(quantity = Quantity.ONE)
 }
