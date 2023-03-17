@@ -1,5 +1,7 @@
 package tpm.yu.mol.share.bin
 
+import androidx.fragment.app.FragmentActivity
+
 class SaData(val viewType: BaseData) {
     /* ************************************************************
      * Classes
@@ -26,7 +28,8 @@ class SaData(val viewType: BaseData) {
     class Grid(override var direction: Direction, val count: Int = 3) :
         ListData(direction = direction)
 
-    class Pager(override var direction: Direction) : ListData(direction = direction)
+    class Pager(override var direction: Direction, val fragmentActivity: FragmentActivity) :
+        ListData(direction = direction)
 
     /* ************************************************************
      * One

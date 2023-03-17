@@ -31,24 +31,33 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.dummyApps()
 
+        val vertical = SaData.Direction.VERTICAL
+        val horizontal = SaData.Direction.HORIZONTAL
+        val gridSpanCount = 4
         binding.listVertical.setOnClickListener {
-            val data = SaData.List(direction = SaData.Direction.VERTICAL)
+            val data = SaData.List(direction = vertical)
             buildView(data = SaData(viewType = data))
         }
         binding.listHorizontal.setOnClickListener {
-            val data = SaData.List(direction = SaData.Direction.HORIZONTAL)
+            val data = SaData.List(direction = horizontal)
             buildView(data = SaData(viewType = data))
         }
         binding.gridVertical.setOnClickListener {
-            val data = SaData.Grid(direction = SaData.Direction.VERTICAL, count = 4)
+            val data = SaData.Grid(direction = vertical, count = gridSpanCount)
             buildView(data = SaData(viewType = data))
         }
         binding.gridHorizontal.setOnClickListener {
-            val data = SaData.Grid(direction = SaData.Direction.HORIZONTAL, count = 4)
+            val data = SaData.Grid(direction = horizontal, count = gridSpanCount)
             buildView(data = SaData(viewType = data))
         }
-        binding.pagerVertical.setOnClickListener { }
-        binding.pagerHorizontal.setOnClickListener { }
+        binding.pagerVertical.setOnClickListener {
+            val data = SaData.Pager(direction = vertical, fragmentActivity = this)
+            buildView(data = SaData(viewType = data))
+        }
+        binding.pagerHorizontal.setOnClickListener {
+            val data = SaData.Pager(direction = horizontal, fragmentActivity = this)
+            buildView(data = SaData(viewType = data))
+        }
     }
 
     private fun buildView(data: SaData) {
