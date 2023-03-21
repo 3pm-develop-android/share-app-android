@@ -59,7 +59,7 @@ class MainViewModel : ViewModel() {
 
     fun dummyApps() {
         val result = arrayListOf<AppInfo>()
-        for (index in (1..100)) {
+        for (index in 1..100) {
             val position = index % games.size
             result.add(games[position])
         }

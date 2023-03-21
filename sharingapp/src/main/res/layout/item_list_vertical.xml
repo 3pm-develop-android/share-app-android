@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/space">
 
@@ -39,35 +39,16 @@
         <TextView
             android:id="@+id/name"
             style="@style/app_name_text"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/icon_size"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space"
+            android:layout_marginTop="@dimen/space"
             android:layout_marginEnd="@dimen/space"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintStart_toEndOf="@id/card"
-            app:layout_constraintTop_toTopOf="@id/card" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="left"
-            app:constraint_referenced_ids="install" />
-
-        <TextView
-            android:id="@+id/install"
-            style="@style/app_name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Install"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:background="@drawable/bg_install_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="@id/card"
+            app:layout_constraintStart_toStartOf="@id/card"
+            app:layout_constraintTop_toBottomOf="@id/card" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

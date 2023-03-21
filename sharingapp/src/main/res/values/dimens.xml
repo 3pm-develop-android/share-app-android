@@ -7,7 +7,7 @@
     <dimen name="space_larger">16dp</dimen>
     <dimen name="space_ultimate">24dp</dimen>
 
-    <dimen name="icon_size">48dp</dimen>
+    <dimen name="icon_size">96dp</dimen>
     <dimen name="icon_size_tiny">24dp</dimen>
     <dimen name="icon_size_small">36dp</dimen>
     <dimen name="icon_size_large">64dp</dimen>
