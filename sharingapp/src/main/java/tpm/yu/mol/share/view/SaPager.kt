@@ -91,6 +91,7 @@ class SaPager : BaseView {
                 val item = gson.fromJson(getString(ARG_OBJECT), AppInfo::class.java)
 
                 Glide.with(binding.layout.context).load(item.logo).into(binding.icon)
+                binding.name.text = item.name
             }
         }
     }

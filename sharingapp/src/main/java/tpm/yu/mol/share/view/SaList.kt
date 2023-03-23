@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import tpm.yu.mol.share.bin.AppInfo
 import tpm.yu.mol.share.bin.SaData
-import tpm.yu.mol.share.databinding.ItemListBinding
+import tpm.yu.mol.share.databinding.ItemListHorizontalBinding
 import tpm.yu.mol.share.databinding.ItemListVerticalBinding
 import tpm.yu.mol.share.databinding.ViewListBinding
 import tpm.yu.mol.share.util.SaConstant
@@ -65,7 +65,7 @@ class SaList : BaseView {
 
     class ListAdapter(private val data: List<AppInfo>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-        lateinit var recyclerView: RecyclerView
+        private lateinit var recyclerView: RecyclerView
 
         override fun getItemCount(): Int = data.size
 
@@ -73,9 +73,14 @@ class SaList : BaseView {
             val context = parent.context
             val inflater = LayoutInflater.from(context)
             val layoutManager = recyclerView.layoutManager as? LinearLayoutManager
-            return if (layoutManager?.orientation == RecyclerView.HORIZONTAL) {
-                val binding: ItemListBinding = ItemListBinding.inflate(inflater, parent, false)
-                ViewHolder(binding)
+            return if (layoutManager is GridLayoutManager) {
+                val binding: ItemListHorizontalBinding =
+                    ItemListHorizontalBinding.inflate(inflater, parent, false)
+                ViewHolderHorizontal(binding)
+            } else if (layoutManager is LinearLayoutManager && layoutManager.orientation == RecyclerView.HORIZONTAL) {
+                val binding: ItemListHorizontalBinding =
+                    ItemListHorizontalBinding.inflate(inflater, parent, false)
+                ViewHolderHorizontal(binding)
             } else {
                 val binding: ItemListVerticalBinding =
                     ItemListVerticalBinding.inflate(inflater, parent, false)
@@ -86,8 +91,8 @@ class SaList : BaseView {
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             val item: AppInfo = data[position]
             when (holder) {
-                is ViewHolder -> holder.setData(item)
                 is ViewHolderVertical -> holder.setData(item)
+                is ViewHolderHorizontal -> holder.setData(item)
             }
         }
 
@@ -96,14 +101,15 @@ class SaList : BaseView {
             this.recyclerView = recyclerView
         }
 
-        class ViewHolder(private val binding: ItemListBinding) : BaseViewHolder(binding.root) {
+        class ViewHolderVertical(private val binding: ItemListVerticalBinding) :
+            BaseViewHolder(binding.root) {
             override fun setData(item: AppInfo) {
                 Glide.with(binding.layout.context).load(item.logo).into(binding.icon)
                 binding.name.text = item.name
             }
         }
 
-        class ViewHolderVertical(private val binding: ItemListVerticalBinding) :
+        class ViewHolderHorizontal(private val binding: ItemListHorizontalBinding) :
             BaseViewHolder(binding.root) {
             override fun setData(item: AppInfo) {
                 Glide.with(binding.layout.context).load(item.logo).into(binding.icon)

@@ -2,53 +2,111 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/space">
+        android:layout_margin="@dimen/space"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/space">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/space_tiny"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="@dimen/space"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="94dp"
-                android:layout_height="94dp"
-                android:layout_gravity="center"
-                app:cardCornerRadius="@dimen/space">
+                android:id="@+id/card"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/space_tiny"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/space"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    app:cardCornerRadius="@dimen/space" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="94dp"
+                    android:layout_height="94dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="@dimen/space">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:cardCornerRadius="@dimen/space" />
+
+                </androidx.cardview.widget.CardView>
 
             </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/name"
+                style="@style/app_name_text"
+                android:layout_width="@dimen/space_zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space"
+                android:layout_marginEnd="@dimen/space"
+                app:layout_constraintBottom_toTopOf="@id/manufacturer"
+                app:layout_constraintEnd_toEndOf="@id/barrier"
+                app:layout_constraintStart_toEndOf="@id/card"
+                app:layout_constraintTop_toTopOf="@id/card" />
 
-        <TextView
-            android:id="@+id/name"
-            style="@style/app_name_text"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space"
-            android:layout_marginTop="@dimen/space"
-            android:layout_marginEnd="@dimen/space"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/card"
-            app:layout_constraintStart_toStartOf="@id/card"
-            app:layout_constraintTop_toBottomOf="@id/card" />
+            <TextView
+                android:id="@+id/manufacturer"
+                style="@style/manufacturer_text"
+                android:layout_width="@dimen/space_zero"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space"
+                android:text="Vccorp"
+                app:layout_constraintBottom_toTopOf="@id/rate"
+                app:layout_constraintEnd_toEndOf="@id/barrier"
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/rate"
+                style="@style/rate_text"
+                android:layout_width="@dimen/space_zero"
+                android:layout_height="wrap_content"
+                android:text="4.1"
+                app:layout_constraintBottom_toBottomOf="@id/layout"
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/manufacturer" />
+
+            <ImageView
+                android:layout_width="@dimen/space_large"
+                android:layout_height="@dimen/space_large"
+                android:layout_marginStart="@dimen/space_tiny"
+                android:src="@drawable/ic_star"
+                app:layout_constraintBottom_toBottomOf="@id/rate"
+                app:layout_constraintStart_toEndOf="@id/rate"
+                app:layout_constraintTop_toTopOf="@+id/rate" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="@dimen/space_zero"
+                android:layout_height="@dimen/space_zero"
+                app:barrierDirection="left"
+                app:constraint_referenced_ids="install" />
+
+            <TextView
+                android:id="@+id/install"
+                style="@style/blue_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/space_large"
+                android:paddingTop="@dimen/space_small"
+                android:paddingEnd="@dimen/space_large"
+                android:paddingBottom="@dimen/space_small"
+                android:text="@string/install"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="test">Test</string>
+    <string name="install">Install</string>
 </resources>

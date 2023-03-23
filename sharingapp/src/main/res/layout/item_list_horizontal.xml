@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/space">
 
@@ -15,13 +15,13 @@
             android:layout_margin="@dimen/space_tiny"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/space"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="94dp"
-                android:layout_height="94dp"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center"
                 app:cardCornerRadius="@dimen/space">
 
@@ -41,33 +41,30 @@
             style="@style/app_name_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space"
-            android:layout_marginEnd="@dimen/space"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/barrier"
-            app:layout_constraintStart_toEndOf="@id/card"
-            app:layout_constraintTop_toTopOf="@id/card" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="left"
-            app:constraint_referenced_ids="install" />
+            android:layout_marginTop="@dimen/space"
+            app:layout_constraintBottom_toTopOf="@id/rate"
+            app:layout_constraintEnd_toEndOf="@id/card"
+            app:layout_constraintStart_toStartOf="@id/card"
+            app:layout_constraintTop_toBottomOf="@id/card" />
 
         <TextView
-            android:id="@+id/install"
-            style="@style/app_name_text"
-            android:layout_width="wrap_content"
+            android:id="@+id/rate"
+            style="@style/rate_text"
+            android:layout_width="@dimen/space_zero"
             android:layout_height="wrap_content"
-            android:text="Install"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:background="@drawable/bg_install_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:text="4.1"
+            app:layout_constraintBottom_toBottomOf="@id/layout"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <ImageView
+            android:layout_width="@dimen/space_large"
+            android:layout_height="@dimen/space_large"
+            android:layout_marginStart="@dimen/space_tiny"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@id/rate"
+            app:layout_constraintStart_toEndOf="@id/rate"
+            app:layout_constraintTop_toTopOf="@+id/rate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

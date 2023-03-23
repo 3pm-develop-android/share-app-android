@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="app_name_text">
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="blue_text" parent="app_name_text">
+        <item name="android:textColor">@color/blue_400</item>
+        <item name="android:background">@drawable/bg_install_button</item>
+    </style>
+
+    <style name="manufacturer_text" parent="app_name_text">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="rate_text" parent="app_name_text">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
 </resources>

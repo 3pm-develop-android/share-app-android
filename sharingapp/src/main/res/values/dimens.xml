@@ -2,6 +2,7 @@
 <resources>
     <dimen name="space">8dp</dimen>
     <dimen name="space_tiny">2dp</dimen>
+    <dimen name="space_zero">0dp</dimen>
     <dimen name="space_small">4dp</dimen>
     <dimen name="space_large">12dp</dimen>
     <dimen name="space_larger">16dp</dimen>

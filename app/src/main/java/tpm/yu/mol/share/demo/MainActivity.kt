@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val vertical = SaData.Direction.VERTICAL
         val horizontal = SaData.Direction.HORIZONTAL
-        val gridSpanCount = 4
+        val gridSpanCount = 3
         binding.listVertical.setOnClickListener {
             val data = SaData.List(direction = vertical)
             buildView(data = SaData(viewType = data))
