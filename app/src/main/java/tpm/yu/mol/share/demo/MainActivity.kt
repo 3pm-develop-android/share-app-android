@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         SaLogger.instance.e("error")
 
         manager = SaManager.instance
+        manager.requestApps("")
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.apps.observe(this) {
             manager.setApps(apps = it)
